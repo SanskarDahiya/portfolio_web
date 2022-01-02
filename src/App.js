@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { Header } from "./HeaderSection";
+import ContextHOC from "./contextFile";
 
-function App() {
+const { Context, data } = ContextHOC();
+
+function App(props) {
+  const [state, setState] = useState(data);
+  state.updateData = params => {
+    // TODO: Need to add parser to modify data
+    setState({ ...state, ...params });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Context.Provider value={state}>
+      <div className="App">
+        <Header />
+        <div className="App" style={{ flexDirection: "row", width: "100%" }}>
+          <div style={{ display: "flex", flex: 3 }}></div>
+          <Context.Consumer>
+            {({ name, updateData }) => {
+              // console.log("🚀 ~ file: App.js ~ line 18 ~ App ~ updateData", updateData);
+              return (
+                <div
+                  style={{ display: "flex", flex: 7 }}
+                  onClick={() => {
+                    updateData({ name: name + 1 });
+                  }}
+                ></div>
+              );
+            }}
+          </Context.Consumer>
+        </div>
+      </div>
+    </Context.Provider>
   );
 }
 
