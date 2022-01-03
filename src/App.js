@@ -1,36 +1,17 @@
 import "./App.css";
 import { useState } from "react";
-import { Header } from "./HeaderSection";
-import ContextHOC from "./contextFile";
-
+import ContextHOC from "./Helper/ContextProvider";
+import { Header } from "./Components/HeaderSection";
+import MainDetail from "./Components/MainDetail";
 const { Context, data } = ContextHOC();
 
-function App(props) {
-  const [state, setState] = useState(data);
-  state.updateData = params => {
-    // TODO: Need to add parser to modify data
-    setState({ ...state, ...params });
-  };
+function App() {
+  const [user, updateUser] = useState(data);
   return (
-    <Context.Provider value={state}>
+    <Context.Provider value={user}>
+      <Header />
       <div className="App">
-        <Header />
-        <div className="App" style={{ flexDirection: "row", width: "100%" }}>
-          <div style={{ display: "flex", flex: 3 }}></div>
-          <Context.Consumer>
-            {({ name, updateData }) => {
-              // console.log("🚀 ~ file: App.js ~ line 18 ~ App ~ updateData", updateData);
-              return (
-                <div
-                  style={{ display: "flex", flex: 7 }}
-                  onClick={() => {
-                    updateData({ name: name + 1 });
-                  }}
-                ></div>
-              );
-            }}
-          </Context.Consumer>
-        </div>
+        <MainDetail />
       </div>
     </Context.Provider>
   );
