@@ -29,20 +29,39 @@ const modifyName = name => {
   initials = initials.toUpperCase();
   return { name: characters.join(" "), initials };
 };
+const subHeading = { padding: "5px", margin: "5px" };
 
+const subHeader = [
+  { title: "Experience", route: "", isSpecial: false },
+  { title: "Work", route: "", isSpecial: false },
+  { title: "Contact", route: "", isSpecial: false },
+  { title: "Resume", route: "", isSpecial: true }
+];
 export const Header = () => {
-  const { name: currentName } = useContext(Context);
+  let { name: currentName } = useContext(Context);
   const { name, initials } = useMemo(() => modifyName(currentName), [currentName]);
+  if (subHeader[0].title !== name) {
+    subHeader.unshift({ title: name });
+  }
   return (
     <div
       style={{
         display: "flex",
         justifyContent: "space-between",
+        alignItems: "center",
         padding: "2px"
       }}
     >
       <AppIcon initials={initials} />
-      <div>{JSON.stringify(name)}</div>
+      <div style={{ display: "flex", padding: "10px" }}>
+        {subHeader.map(({ title }, key) => {
+          return (
+            <div key={key} style={subHeading}>
+              {title}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
