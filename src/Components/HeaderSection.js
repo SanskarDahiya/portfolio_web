@@ -1,5 +1,7 @@
 import { useContext, useMemo } from "react";
 import ContextHOC from "../Helper/ContextProvider";
+import AppIcon from "./AppIcon";
+
 const { Context } = ContextHOC();
 
 const modifyName = name => {
@@ -14,24 +16,33 @@ const modifyName = name => {
       characters.push(name.join(""));
     });
   }
-  return characters.join(" ");
+  let initials = "";
+  if (characters[0] && characters[0][0]) {
+    initials += characters[0][0];
+  }
+  if (characters.length > 1) {
+    const lastElem = characters.length - 1;
+    if (characters[lastElem] && characters[lastElem][0]) {
+      initials += characters[lastElem][0];
+    }
+  }
+  initials = initials.toUpperCase();
+  return { name: characters.join(" "), initials };
 };
 
 export const Header = () => {
-  const { name } = useContext(Context);
-  const generatedName = useMemo(() => modifyName(name), [name]);
+  const { name: currentName } = useContext(Context);
+  const { name, initials } = useMemo(() => modifyName(currentName), [currentName]);
   return (
     <div
       style={{
         display: "flex",
-        backgroundColor: "#3457D5",
-        color: "white",
         justifyContent: "space-between",
-        width: "100%"
+        padding: "2px"
       }}
     >
-      {generatedName}
-      <div>Side Menu Options</div>
+      <AppIcon initials={initials} />
+      <div>{JSON.stringify(name)}</div>
     </div>
   );
 };

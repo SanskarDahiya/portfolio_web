@@ -6,7 +6,7 @@ import MainDetail from "./Components/MainDetail";
 const { Context, data } = ContextHOC();
 
 function App() {
-  const [user, updateUser] = useState(data);
+  const [user] = useState(data);
   return (
     <Context.Provider value={user}>
       <Header />
