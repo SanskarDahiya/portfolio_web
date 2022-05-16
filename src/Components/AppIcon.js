@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-const height = 50;
-const width = height * 0.875;
+const height = 65;
+const width = height;
 const rotateClassName = "rotate-10-sec";
 let ref;
 const AppIcon = props => {
@@ -16,26 +16,13 @@ const AppIcon = props => {
   //   TODO: Add Link Here
   return (
     <div
-      style={{ position: "relative", height, width }}
-      onMouseEnter={() => {
-        setRotateClass(rotateClassName);
-      }}
+      style={{ width, display: "flex", justifyContent: "center", alignItems: "center" }}
+      onMouseEnter={() => setRotateClass(rotateClassName)}
     >
-      <div
-        style={{
-          position: "absolute",
-          height,
-          width,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <div>{initials}</div>
-      </div>
+      <div style={{ position: "absolute" }}>{initials}</div>
       <svg id="app-icon-cover" className={rotateClass} role="img" viewBox="0 0 84 96">
-        <g transform="translate(-8.000000, -2.000000)">
-          <g transform="translate(11.000000, 5.000000)">
+        <g transform="translate(-8, -2)">
+          <g transform="translate(11, 5)">
             <polygon fill="none" stroke="black" strokeWidth="5" points="39 0 0 22 0 67 39 90 78 68 78 23"></polygon>
           </g>
         </g>
