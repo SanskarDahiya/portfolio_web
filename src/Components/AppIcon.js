@@ -7,7 +7,7 @@ const AppIcon = props => {
   const [rotateClass, setRotateClass] = useState(rotateClassName);
   const initials = props.initials;
   useEffect(() => {
-    clearTimeout(ref);
+    ref && clearTimeout(ref);
     ref = setTimeout(() => {
       setRotateClass("");
     }, 5020);
