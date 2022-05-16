@@ -2,7 +2,7 @@ body {
   background-color: #f3f3f3;
 }
 div {
-  border: 1pt solid red;
+  /* border: 1pt solid red; */
   min-width: 10px;
   min-height: 10px;
 }

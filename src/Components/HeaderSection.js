@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import ContextHOC from "../Helper/ContextProvider";
 import AppIcon from "./AppIcon";
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 const height = 50;
 const width = height * 0.875;
 const rotateClassName = "rotate-10-sec";
