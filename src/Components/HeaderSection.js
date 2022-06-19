@@ -1,67 +1,115 @@
-import React, { useContext, useMemo } from "react";
-import ContextHOC from "../Helper/ContextProvider";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import AppIcon from "./AppIcon";
 
-const { Context } = ContextHOC();
-
-const modifyName = name => {
-  const characters = [];
-  name = (name || "").trim();
-  if (name) {
-    const names = name.split(" ");
-    names.forEach(name => {
-      name = (name || "").toLowerCase();
-      name = name.split("");
-      name[0] = (name[0] || "").toUpperCase();
-      characters.push(name.join(""));
-    });
+const HEADING_DATA = [
+  {
+    link: "/",
+    title: "Home"
+  },
+  {
+    link: "/about",
+    title: "About"
+  },
+  {
+    link: "/services",
+    title: "Services"
+  },
+  {
+    link: "/portfolio",
+    title: "Portfolio"
+  },
+  {
+    link: "/pages",
+    title: "Pages",
+    subLink: [
+      {
+        link: "#elements",
+        title: "Elements"
+      },
+      {
+        link: "#portfolio-details",
+        title: "Portfolio Details"
+      }
+    ]
+  },
+  {
+    link: "/blog",
+    title: "Blog",
+    subLink: [
+      {
+        link: "#blog",
+        title: "Blog"
+      },
+      {
+        link: "#single-blog",
+        title: "Single Blog"
+      }
+    ]
+  },
+  {
+    link: "/contacts",
+    title: "Contact"
   }
-  let initials = "";
-  if (characters[0] && characters[0][0]) {
-    initials += characters[0][0];
-  }
-  if (characters.length > 1) {
-    const lastElem = characters.length - 1;
-    if (characters[lastElem] && characters[lastElem][0]) {
-      initials += characters[lastElem][0];
-    }
-  }
-  initials = initials.toUpperCase();
-  return { name: characters.join(" "), initials };
-};
-const subHeading = { padding: "5px", margin: "5px" };
-
-const subHeader = [
-  { title: "Experience", route: "", isSpecial: false },
-  { title: "Work", route: "", isSpecial: false },
-  { title: "Contact", route: "", isSpecial: false },
-  { title: "Resume", route: "", isSpecial: true }
 ];
-export const Header = () => {
-  let { name: currentName } = useContext(Context);
-  const { name, initials } = useMemo(() => modifyName(currentName), [currentName]);
-  if (subHeader[0].title !== name) {
-    subHeader.unshift({ title: name });
-  }
+
+const HeaderElement = ({ link, title, subLink }) => {
+  const { pathname } = useLocation();
+  const isActive = pathname === link;
+  const isDropDown = !!subLink;
+  //   className="nav-item submenu dropdown">
+  // className="nav-link dropdown-toggle"
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "2px"
-      }}
-    >
-      <AppIcon initials={initials} />
-      <div style={{ display: "flex", padding: "10px" }}>
-        {subHeader.map(({ title }, key) => {
-          return (
-            <div key={key} style={subHeading}>
-              {title}
+    <li className={`nav-item ${isActive && "active"} ${isDropDown && "submenu dropdown"}`}>
+      <Link className={`nav-link ${isDropDown && "dropdown-toggle"}`} to={link}>
+        {title}
+      </Link>
+      {isDropDown && (
+        <ul className="dropdown-menu">
+          {subLink.map((data, index) => {
+            return <HeaderElement {...data} link={link + data.link} key={index} />;
+          })}
+        </ul>
+      )}
+    </li>
+  );
+};
+
+export const Header = () => {
+  return (
+    <header className="header_area">
+      <div className="main_menu">
+        <nav className="navbar navbar-expand-lg navbar-light">
+          <div className="container">
+            {/* Brand and toggle get grouped for better mobile display */}
+            <a className="navbar-brand logo_h" href="/">
+              <AppIcon initials="" />
+              {/* <img src="img/logo.png" alt="" /> */}
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="icon-bar" />
+              <span className="icon-bar" />
+              <span className="icon-bar" />
+            </button>
+            {/* Collect the nav links, forms, and other content for toggling */}
+            <div className="collapse navbar-collapse offset" id="navbarSupportedContent">
+              <ul className="nav navbar-nav menu_nav justify-content-end">
+                {HEADING_DATA.map((data, index) => (
+                  <HeaderElement {...data} key={index} />
+                ))}
+              </ul>
             </div>
-          );
-        })}
+          </div>
+        </nav>
       </div>
-    </div>
+    </header>
   );
 };
