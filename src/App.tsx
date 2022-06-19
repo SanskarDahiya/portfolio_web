@@ -1,17 +1,18 @@
-import React, { Fragment } from "react";
-import { Routes, Route, useParams, useLocation } from "react-router-dom";
-
 import "./App.css";
+import { Fragment } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Components/Header";
+import Section from "./Components/Sections";
+import AboutSection from "./Components/Sections/About";
+import PortfolioSection from "./Components/Sections/Portfolio";
+import ServicesSection from "./Components/Sections/Services";
 
 function Abcd() {
-  const params = useParams();
-  const loc = useLocation();
   return (
     <div style={{ padding: "100px" }}>
       Hello
       <hr />
-      {JSON.stringify({ params, loc })}
+      Work In Progress
       <hr />
     </div>
   );
@@ -20,49 +21,11 @@ function App() {
   return (
     <Fragment>
       <Header />
-      <section className="home_banner_area">
-        <div className="banner_inner">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-7">
-                <div className="banner_content">
-                  <h3 className="text-uppercase">Hell0</h3>
-                  <div className="d-flex align-items-center">
-                    <a className="primary_btn" href="#">
-                      <span>Hire Me</span>
-                    </a>
-                    <a className="primary_btn tr-bg" href="#">
-                      <span>Get CV</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-5">
-                <div className="home_right_img">
-                  <img className="" src="img/banner/home-right.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="banner_area">
-        <div className="banner_inner d-flex align-items-center">
-          <div className="container">
-            <div className="banner_content text-center">
-              <h2>Portfolio Details</h2>
-              <div className="page_link">
-                <a href="index.html">Home</a>
-                <a href="portfolio.html">Portfolio</a>
-                <a href="portfolio-details.html">Portfolio Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <Routes>
-        <Route path="/" element={<Abcd />} />
-        <Route path="about" element={<Abcd />} />
+        <Route path="/" element={<Section />} />
+        <Route path="/about" element={<AboutSection />} />
+        <Route path="/services" element={<ServicesSection />} />
+        <Route path="/portfolio" element={<PortfolioSection />} />
         <Route path="*" element={<Abcd />} />
       </Routes>
     </Fragment>
