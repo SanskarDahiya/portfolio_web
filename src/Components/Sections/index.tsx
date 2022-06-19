@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 interface Home_Section {
   name?: string;
   title?: string;

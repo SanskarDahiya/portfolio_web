@@ -2,10 +2,9 @@ import "./App.css";
 import { Fragment } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./Components/Header";
-import Section from "./Components/Sections";
-import AboutSection from "./Components/Sections/About";
-import PortfolioSection from "./Components/Sections/Portfolio";
-import ServicesSection from "./Components/Sections/Services";
+
+import { HEADING_DATA } from "./constants/data";
+import Layouts from "./Components/Layouts";
 
 function Abcd() {
   return (
@@ -22,10 +21,15 @@ function App() {
     <Fragment>
       <Header />
       <Routes>
-        <Route path="/" element={<Section />} />
-        <Route path="/about" element={<AboutSection />} />
-        <Route path="/services" element={<ServicesSection />} />
-        <Route path="/portfolio" element={<PortfolioSection />} />
+        {HEADING_DATA.map((data, index) => {
+          return (
+            <Route
+              path={data.link}
+              element={<Layouts {...data} />}
+              key={index}
+            />
+          );
+        })}
         <Route path="*" element={<Abcd />} />
       </Routes>
     </Fragment>

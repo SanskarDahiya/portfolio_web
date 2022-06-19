@@ -1,27 +1,27 @@
-import { Link } from "react-router-dom";
+import { useMemo } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { getSectionLinks } from "../../constants/data";
 
-interface section {
-  title?: string;
-  links?: {
-    link: string;
-    title?: string;
-  }[];
-}
-
-const SectionWrapper = (props: section) => {
+const SectionWrapper = () => {
+  const { pathname } = useLocation();
+  const SectionLinks = useMemo(() => getSectionLinks(pathname), [pathname]);
   return (
     <section className="banner_area">
       <div className="banner_inner d-flex align-items-center">
         <div className="container">
           <div className="banner_content text-center">
-            <h2>{props?.title}</h2>
-            {props?.links && (
+            <h2>{SectionLinks?.title}</h2>
+            {SectionLinks?.links.length ? (
               <div className="page_link">
-                {props.links.map(({ link, title }, index) => {
-                  return <Link to={link}>{title}</Link>;
+                {SectionLinks.links.map(({ link, title }, index) => {
+                  return (
+                    <Link to={link} key={title + index}>
+                      {title}
+                    </Link>
+                  );
                 })}
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

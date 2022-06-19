@@ -1,56 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
+import { HEADING_DATA } from "../constants/data";
 import AppIcon from "./AppIcon";
-
-const HEADING_DATA = [
-  {
-    link: "/",
-    title: "Home",
-  },
-  {
-    link: "/about",
-    title: "About",
-  },
-  {
-    link: "/services",
-    title: "Services",
-  },
-  {
-    link: "/portfolio",
-    title: "Portfolio",
-  },
-  {
-    link: "/pages",
-    title: "Pages",
-    subLink: [
-      {
-        link: "#elements",
-        title: "Elements",
-      },
-      {
-        link: "#portfolio-details",
-        title: "Portfolio Details",
-      },
-    ],
-  },
-  {
-    link: "/blog",
-    title: "Blog",
-    subLink: [
-      {
-        link: "#blog",
-        title: "Blog",
-      },
-      {
-        link: "#single-blog",
-        title: "Single Blog",
-      },
-    ],
-  },
-  {
-    link: "/contacts",
-    title: "Contact",
-  },
-];
 
 interface headerElement {
   link: string;
