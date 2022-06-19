@@ -6,6 +6,10 @@ import Header from "./Components/Header";
 import { HEADING_DATA } from "./constants/data";
 import Layouts from "./Components/Layouts";
 
+const ALL_ROUTES = HEADING_DATA.map((data, index) => {
+  return <Route path={data.link} element={<Layouts {...data} />} key={index} />;
+});
+
 function Abcd() {
   return (
     <div style={{ padding: "100px" }}>
@@ -13,6 +17,7 @@ function Abcd() {
       <hr />
       Work In Progress
       <hr />
+      404 Not Found
     </div>
   );
 }
@@ -21,15 +26,7 @@ function App() {
     <Fragment>
       <Header />
       <Routes>
-        {HEADING_DATA.map((data, index) => {
-          return (
-            <Route
-              path={data.link}
-              element={<Layouts {...data} />}
-              key={index}
-            />
-          );
-        })}
+        {ALL_ROUTES}
         <Route path="*" element={<Abcd />} />
       </Routes>
     </Fragment>
