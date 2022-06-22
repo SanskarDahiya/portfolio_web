@@ -7,8 +7,8 @@ import { PageDataInterface } from "../constants/data";
 const Layouts = (props: PageDataInterface) => {
   const hideSection = props.hideSection;
   const components = props.Components;
-  const params = useParams();
-  const loc = useLocation();
+  const queryParams = useParams();
+  const locationData = useLocation();
 
   return (
     <Fragment>
@@ -19,7 +19,7 @@ const Layouts = (props: PageDataInterface) => {
         return null;
       })}
       <hr style={{ padding: "100px" }} />
-      {JSON.stringify({ params, loc })}
+      {JSON.stringify({ params: queryParams, loc: locationData })}
       <hr />
     </Fragment>
   );

@@ -5,6 +5,7 @@ import Header from "./Components/Header";
 
 import { HEADING_DATA } from "./constants/data";
 import Layouts from "./Components/Layouts";
+import Footer from "./Components/Footer";
 
 const ALL_ROUTES = HEADING_DATA.map((data, index) => {
   return <Route path={data.link} element={<Layouts {...data} />} key={index} />;
@@ -29,6 +30,7 @@ function App() {
         {ALL_ROUTES}
         <Route path="*" element={<Abcd />} />
       </Routes>
+      <Footer />
     </Fragment>
   );
 }

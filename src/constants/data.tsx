@@ -19,71 +19,70 @@ const HOME = {
   link: "/",
   title: "Home",
   hideSection: true,
-  Components: ["HomeSection"],
+  Components: ["HomeSection"]
 } as PageDataInterface;
 
 const ABOUT = {
   link: "/about",
   title: "About",
   heading: "About Us",
-  Components: ["About"],
+  Components: ["About"]
 } as PageDataInterface;
 
 const SERVICES = {
   link: "/services",
   title: "Services",
-  Components: ["Services"],
+  Components: ["Services"]
 } as PageDataInterface;
 
 const PORTFOLIO = {
   link: "/portfolio",
-  title: "Portfolio",
+  title: "Portfolio"
 } as PageDataInterface;
 
 const PAGES = {
   link: "/pages",
-  title: "Pages",
-  subLink: [
-    {
-      link: "#elements",
-      title: "Elements",
-    },
-    {
-      link: "#portfolio-details",
-      title: "Portfolio Details",
-    },
-  ],
+  title: "Pages"
 } as PageDataInterface;
 
 const BLOG = {
   link: "/blog",
-  title: "Blog",
-  subLink: [
-    {
-      link: "#blog",
-      title: "Blog",
-    },
-    {
-      link: "#single-blog",
-      title: "Single Blog",
-    },
-  ],
+  title: "Blog"
 } as PageDataInterface;
 
 const CONTACT = {
   link: "/contacts",
-  title: "Contact",
+  title: "Contact"
 };
 
-export const HEADING_DATA = [
-  HOME,
-  ABOUT,
-  SERVICES,
-  PORTFOLIO,
-  PAGES,
-  BLOG,
-  CONTACT,
-] as PageDataInterface[];
+export const HEADING_DATA = [HOME, ABOUT, SERVICES, PORTFOLIO, PAGES, BLOG, CONTACT] as PageDataInterface[];
+
+export const FOOTER_DATA = {
+  image: {
+    url: "/",
+    image: "img/logo.png",
+    title: "Footer Image"
+  },
+  refLinks: [
+    {
+      url: "/",
+      link: "/",
+      className: "fa-facebook"
+    },
+    {
+      className: "fa-twitter"
+    },
+    {
+      className: "fa-dribbble"
+    },
+    {
+      className: "fa-instagram"
+    },
+    {
+      className: "fa-behance"
+    }
+  ]
+};
 
 export const API_MAPPING = HEADING_DATA.reduce(
   (acc, value) => {
@@ -96,12 +95,12 @@ export const API_MAPPING = HEADING_DATA.reduce(
 );
 
 export const getSectionLinks = (pathname: string): SectionWrapperInterface => {
-  const paths = pathname.split("/").map((path) => {
+  const paths = pathname.split("/").map(path => {
     path = "/" + path;
     const elem = API_MAPPING[path];
     return {
       link: elem.link,
-      title: elem.title,
+      title: elem.title
     } as SectionWrapperLinksInterface;
   });
   const elem = API_MAPPING[pathname];

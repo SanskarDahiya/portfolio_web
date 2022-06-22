@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HEADING_DATA } from "../constants/data";
 import AppIcon from "./AppIcon";
@@ -15,20 +16,14 @@ const HeaderElement = ({ link, title, subLink }: headerElement) => {
   //   className="nav-item submenu dropdown">
   // className="nav-link dropdown-toggle"
   return (
-    <li
-      className={`nav-item ${isActive && "active"} ${
-        isDropDown && "submenu dropdown"
-      }`}
-    >
+    <li className={`nav-item ${isActive && "active"} ${isDropDown && "submenu dropdown"}`}>
       <Link className={`nav-link ${isDropDown && "dropdown-toggle"}`} to={link}>
         {title}
       </Link>
       {isDropDown && (
         <ul className="dropdown-menu">
           {subLink.map((data, index) => {
-            return (
-              <HeaderElement {...data} link={link + data.link} key={index} />
-            );
+            return <HeaderElement {...data} link={link + data.link} key={index} />;
           })}
         </ul>
       )}
@@ -61,14 +56,11 @@ function Header() {
               <span className="icon-bar" />
             </button>
             {/* Collect the nav links, forms, and other content for toggling */}
-            <div
-              className="collapse navbar-collapse offset"
-              id="navbarSupportedContent"
-            >
+            <div className="collapse navbar-collapse offset" id="navbarSupportedContent">
               <ul className="nav navbar-nav menu_nav justify-content-end">
-                {HEADING_DATA.map((data, index) => (
-                  <HeaderElement {...data} key={index} />
-                ))}
+                {HEADING_DATA.map((data, index) => {
+                  return <HeaderElement {...data} key={index} />;
+                })}
               </ul>
             </div>
           </div>
@@ -78,4 +70,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default React.memo(Header);
