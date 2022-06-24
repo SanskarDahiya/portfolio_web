@@ -1,7 +1,9 @@
 import React from "react";
-import HomeSection from "./HomeComponent";
+import AboutUs from "./AboutUs";
+import HomeSection from "./HomeTitle";
 
 export default {
+  AboutUs,
   HomeSection
 } as {
   [key: string]: React.ComponentType;

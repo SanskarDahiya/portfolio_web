@@ -23,7 +23,7 @@ const HOME_SECTION_DATA = {
   ]
 } as Home_Section;
 
-export default function Section() {
+export default function HomeTitle() {
   const { name, title, buttons } = HOME_SECTION_DATA;
   return (
     <section className="home_banner_area">
