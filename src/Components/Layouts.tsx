@@ -5,8 +5,7 @@ import Components from "./index";
 import { PageDataInterface } from "../constants/data";
 
 const Layouts = (props: PageDataInterface) => {
-  const hideSection = props.hideSection;
-  const components = props.Components;
+  const { title, hideSection, Components: components } = props;
   const queryParams = useParams();
   const locationData = useLocation();
 
@@ -16,7 +15,7 @@ const Layouts = (props: PageDataInterface) => {
       {components?.map((name: any, index: number) => {
         const Comp = Components[name];
         if (Comp) return <Comp key={index} />;
-        return null;
+        throw new Error(`[Lauout] No Component found name [${name}] for [${title}]`);
       })}
       <hr style={{ padding: "100px" }} />
       {JSON.stringify({ params: queryParams, loc: locationData })}

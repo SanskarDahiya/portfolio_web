@@ -25,14 +25,14 @@ const HOME = {
 const ABOUT = {
   link: "/about",
   title: "About",
-  heading: "About Us",
-  Components: ["About"]
+  heading: "About Us"
+  // Components: ["About"]
 } as PageDataInterface;
 
 const SERVICES = {
   link: "/services",
-  title: "Services",
-  Components: ["Services"]
+  title: "Services"
+  // Components: ["Services"]
 } as PageDataInterface;
 
 const PORTFOLIO = {
