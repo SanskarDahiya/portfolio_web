@@ -19,7 +19,7 @@ const HOME = {
   link: "/",
   title: "Home",
   hideSection: true,
-  Components: ["HomeSection", "AboutUs", "BrandWork"]
+  Components: ["HomeSection", "AboutUs", "BrandWork", "ServicesOffered"]
 } as PageDataInterface;
 
 const ABOUT = {
