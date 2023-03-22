@@ -1,19 +1,77 @@
+import Head from 'next/head'
 import './globals.css'
 
 export const metadata = {
   title: 'Sanskar Dahiya',
-  description: 'Portfolio Website',
+  description: 'Portfolio Website | Portfolio',
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'portfolio',
+  '@type': 'Person',
+  name: 'Sanskar Dahiya',
+  additionalName: 'Sanskar',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'India',
+    addressRegion: 'Haryana',
+    addressLocality: 'Haryana',
+    streetAddress: 'Haryana',
+  },
+  // url: 'https://www.yourwebsite.com',
+  // image: 'https://www.yourwebsite.com/images/yourimage.jpg',
+  description:
+    'Full Stack Web Developer | Experience in NextJS, ReactJS | Software Developer Engineer',
+  sameAs: [
+    'https://www.linkedin.com/in/sanskardahiya/',
+    // 'https://twitter.com/yourtwitterhandle',
+    'https://www.instagram.com/sanskar__dahiya/',
+  ],
+  email: 'mailto:sanskardahiya98@gmail.com',
+  jobTitle: 'Software Developer Engineer',
   headline: 'Portfolio Website | Sanskar Dahiya',
-  description: 'Sanskar Dahiya | Protfolio',
-  author: [
+
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Loco',
+    url: 'https://loco.gg/',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Seth Jai Parkash Mukand Lal Institute of Engineering and Technology',
+    url: 'https://www.jmit.ac.in/',
+  },
+  // hasOccupation: [
+  //   {
+  //     '@type': 'JobPosting',
+  //     title: 'Software Developer Engineer',
+  //     employmentType: 'Full-time',
+  //     hiringOrganization: {
+  //       '@type': 'Organization',
+  //       name: 'Daffodil Software',
+  //       url: 'https://www.daffodilsw.com/',
+  //     },
+  //     jobLocation: {
+  //       '@type': 'Place',
+  //       address: {
+  //         '@type': 'PostalAddress',
+  //         addressLocality: 'Hisar',
+  //         addressRegion: 'Haryana',
+  //         addressCountry: 'India',
+  //       },
+  //     },
+  //   },
+  // ],
+  knowsLanguage: [
     {
-      '@type': 'Person',
-      name: 'Sanskar Dahiya',
+      '@type': 'Language',
+      name: 'English',
+      alternateName: 'en',
+    },
+    {
+      '@type': 'Language',
+      name: 'Hindi',
+      alternateName: 'hi',
     },
   ],
   datePublished: new Date(),
@@ -26,7 +84,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      <script type="application/ld+json" suppressHydrationWarning={true}>
+        {JSON.stringify(jsonLd)}
+      </script>
       <body>{children}</body>
     </html>
   )
