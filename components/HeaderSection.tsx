@@ -21,23 +21,28 @@ const HeaderSection = () => {
         />
       </div>
       <div className="opacity-70 absolute inset-0 z-[1] bg-gradient-to-b from-[#FF9900] via-[#FF9900] to-orange-700" />
-      <div className="z-[2] text-white pt-36">
+      <div className="z-[2] text-white absolute top-[50%]">
         <h1
           className={
             kaushan.className +
-            ' -rotate-6 font-medium text-4xl mb-14 md:text-5xl'
+            ' ' +
+            'text-center -rotate-6 font-medium text-4xl mb-14 md:text-5xl'
           }
         >
           ~ Sanskar Dahiya ~
         </h1>
-        <div className="text-center mt-4 text-xl">I'm Full Stack Developer</div>
-        <div className="text-center text-lg">
+        <div className="text-center mt-4 text-xl">Full Stack Developer</div>
+        <br />
+        <div className="text-center text-lg px-4">
           I can solve
           <span className="line-through px-1">
             <TypewriterEffect text=" all some one of " upto={5} />
           </span>
           your problems, ok?
         </div>
+        {/* <div className="text-center text-lg">
+          Making Your Ideas a Reality with Customized Software Development
+        </div> */}
       </div>
     </div>
   )
