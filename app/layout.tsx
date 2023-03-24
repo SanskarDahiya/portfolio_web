@@ -84,13 +84,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Script
-        id="myData"
-        type="application/ld+json"
-        suppressHydrationWarning={true}
-      >
-        {JSON.stringify(jsonLd)}
-      </Script>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="9aPGR4HnQhgMxCt1Ts0HrGKulzq-i1WxiQixlBYya9s"
+        />
+        <Script
+          id="myData"
+          type="application/ld+json"
+          suppressHydrationWarning={true}
+        >
+          {JSON.stringify(jsonLd)}
+        </Script>
+      </head>
       <body>{children}</body>
     </html>
   )
