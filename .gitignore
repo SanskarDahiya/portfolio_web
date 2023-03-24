@@ -36,5 +36,5 @@ yarn-error.log*
 next-env.d.ts
 .vscode/settings.json
 .env
-**/public/sitemap.xml
+**/public/sitemap*.xml
 **/public/robots.txt
