@@ -1,5 +1,5 @@
-import Head from 'next/head'
 import './globals.css'
+import Script from 'next/script'
 
 export const metadata = {
   title: 'Sanskar Dahiya',
@@ -84,9 +84,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <script type="application/ld+json" suppressHydrationWarning={true}>
+      <Script
+        id="myData"
+        type="application/ld+json"
+        suppressHydrationWarning={true}
+      >
         {JSON.stringify(jsonLd)}
-      </script>
+      </Script>
       <body>{children}</body>
     </html>
   )
