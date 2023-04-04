@@ -1,15 +1,15 @@
 import './globals.css'
 import Script from 'next/script'
 
-export const metadata = {
-  title: 'Sanskar Dahiya',
-  description: 'Portfolio Website | Portfolio',
-}
+const PAGE_NAME = 'Sanskar Dahiya'
+const PAGE_DESCRIPTION =
+  "Welcome to Sanskar Dahiya's portfolio website a full-stack web developer with a focus on JavaScript, Next.js. I has the skills and experience to help bring your web development projects to life."
+// 'Full Stack Web Developer | Experience in NextJS, ReactJS | Software Developer Engineer'
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Sanskar Dahiya',
+  name: PAGE_NAME,
   additionalName: 'Sanskar',
   address: {
     '@type': 'PostalAddress',
@@ -20,8 +20,7 @@ const jsonLd = {
   },
   // url: 'https://www.yourwebsite.com',
   // image: 'https://www.yourwebsite.com/images/yourimage.jpg',
-  description:
-    'Full Stack Web Developer | Experience in NextJS, ReactJS | Software Developer Engineer',
+  description: PAGE_DESCRIPTION,
   sameAs: [
     'https://www.linkedin.com/in/sanskardahiya/',
     // 'https://twitter.com/yourtwitterhandle',
@@ -75,6 +74,14 @@ const jsonLd = {
     },
   ],
   datePublished: new Date(),
+}
+export const metadata = {
+  ...jsonLd,
+  title: jsonLd.name,
+  openGraph: {
+    ...jsonLd,
+    title: jsonLd.name,
+  },
 }
 
 export default function RootLayout({
