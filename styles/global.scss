@@ -1,0 +1,13 @@
+/* variables.module.scss */
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-column {
+  @extend .center;
+
+  flex-direction: column;
+}

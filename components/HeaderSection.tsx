@@ -6,7 +6,7 @@ const kaushan = Kaushan_Script({ weight: '400', subsets: ['latin'] })
 
 const HeaderSection = () => {
   return (
-    <div className="w-full h-screen relative flex justify-center items-center z-[1]">
+    <div className="w-full h-screen relative center z-[1] snap-start">
       <div className="z-[1] overflow-hidden absolute inset-0">
         <Image
           src={'/sanskar_background.jpg'}

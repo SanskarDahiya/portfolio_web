@@ -1,4 +1,5 @@
 import './globals.css'
+import '../styles/global.scss'
 import Script from 'next/script'
 
 const PAGE_NAME = 'Sanskar Dahiya'
@@ -104,7 +105,7 @@ export default function RootLayout({
           {JSON.stringify(jsonLd)}
         </Script>
       </head>
-      <body>{children}</body>
+      <body className="scrollbar-hide">{children}</body>
     </html>
   )
 }

@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const path = require('path')
+
 const nextConfig = {
   compress: true,
   poweredByHeader: false,
@@ -6,6 +8,9 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
     appDir: true,
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
   },
   serverRuntimeConfig: {},
   env: {},
