@@ -1,6 +1,6 @@
-import './globals.css'
-import '../styles/global.scss'
 import Script from 'next/script'
+import '../styles/global.scss'
+import './globals.css'
 
 const PAGE_NAME = 'Sanskar Dahiya'
 const PAGE_DESCRIPTION =
