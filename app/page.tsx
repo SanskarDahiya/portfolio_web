@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="snap-mandatory scrollbar-hide overflow-auto">
       <HeaderSection />
-      <div className="hidden md:block">
+      <div className="hidden">
         <div className="w-full h-screen relative center z-[1] snap-start overflow-scroll">
           About Section Modal
         </div>
