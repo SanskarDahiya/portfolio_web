@@ -1,6 +1,7 @@
 import Script from 'next/script'
 import '../styles/global.scss'
 import './globals.css'
+import NavbarSection from '@/components/NavbarSection'
 
 const PAGE_NAME = 'Sanskar Dahiya'
 const PAGE_DESCRIPTION =
@@ -104,7 +105,10 @@ export default function RootLayout({
           {JSON.stringify(jsonLd)}
         </Script>
       </head>
-      <body className="scrollbar-hide">{children}</body>
+      <body className="scrollbar-hide relative">
+        {children}
+        <NavbarSection />
+      </body>
     </html>
   )
 }

@@ -1,10 +1,15 @@
+'use client'
 import React from 'react'
 import { Kaushan_Script } from 'next/font/google'
 import Image from 'next/image'
 import TypewriterEffect from './TypewriterEffect'
+import useAppInfo from '@/stores/app_info'
+import Fade from 'react-reveal/Fade'
+
 const kaushan = Kaushan_Script({ weight: '400', subsets: ['latin'] })
 
 const HeaderSection = () => {
+  const { isNavBarOpened } = useAppInfo()
   return (
     <div className="w-full h-screen relative center z-[1] snap-start">
       <div className="z-[1] overflow-hidden absolute inset-0">
@@ -22,24 +27,26 @@ const HeaderSection = () => {
       </div>
       <div className="opacity-70 absolute inset-0 z-[1] bg-gradient-to-b from-[#FF9900] via-[#FF9900] to-orange-700" />
       <div className="z-[2] text-white absolute top-[50%]">
-        <h1
-          className={
-            kaushan.className +
-            ' ' +
-            'text-center -rotate-6 font-medium text-4xl mb-14 md:text-5xl'
-          }
-        >
-          ~ Sanskar Dahiya ~
-        </h1>
-        <div className="text-center mt-4 text-xl">Full Stack Developer</div>
-        <br />
-        <div className="text-center text-lg px-4">
-          I can solve
-          <span className="line-through px-1">
-            <TypewriterEffect text=" all some one of " upto={5} />
-          </span>
-          your problems, ok?
-        </div>
+        <Fade bottom when={!isNavBarOpened}>
+          <h1
+            className={
+              kaushan.className +
+              ' ' +
+              'text-center -rotate-6 font-medium text-4xl mb-14 md:text-5xl'
+            }
+          >
+            ~ Sanskar Dahiya ~
+          </h1>
+          <div className="text-center mt-4 text-xl">Full Stack Developer</div>
+          <br />
+          <div className="text-center text-lg px-4">
+            I can solve
+            <span className="line-through px-1">
+              <TypewriterEffect text=" all some one of " upto={5} />
+            </span>
+            your problems, ok?
+          </div>
+        </Fade>
         {/* <div className="text-center text-lg">
           Making Your Ideas a Reality with Customized Software Development
         </div> */}
