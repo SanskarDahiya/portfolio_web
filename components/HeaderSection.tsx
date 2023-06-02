@@ -3,7 +3,7 @@ import React from 'react'
 import { Kaushan_Script } from 'next/font/google'
 import Image from 'next/image'
 import TypewriterEffect from './TypewriterEffect'
-import useAppInfo from '@/stores/app_info'
+import useAppInfo from '@/stores/app_store'
 import Fade from 'react-reveal/Fade'
 
 const kaushan = Kaushan_Script({ weight: '400', subsets: ['latin'] })
