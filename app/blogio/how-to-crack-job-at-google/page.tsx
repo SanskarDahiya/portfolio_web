@@ -18,6 +18,7 @@ const PageComponent = () => {
         <h2 className="text-2xl font-bold mb-4">
           Cracking a Job
           <TypewriterEffect
+            className="withWhiteSpaces"
             text="  at Google as a Software Engineer"
             upto={5}
           />

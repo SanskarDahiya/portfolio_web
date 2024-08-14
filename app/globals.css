@@ -112,6 +112,9 @@ a {
   margin: 0 auto;
   animation: blink-caret 0.75s step-end infinite;
 }
+.withWhiteSpaces {
+  white-space: break-spaces;
+}
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {

@@ -3,7 +3,15 @@ import { wait } from '@/Helper/timer'
 import { getUniqueId } from '@/Helper/uuid'
 import React, { useEffect, useRef } from 'react'
 
-const TypewriterEffect = ({ text, upto }: { text: string; upto?: number }) => {
+const TypewriterEffect = ({
+  className,
+  text,
+  upto,
+}: {
+  className?: string
+  text: string
+  upto?: number
+}) => {
   const textElementRef = useRef<HTMLSpanElement>(null)
   upto = upto || 0
 
@@ -53,7 +61,7 @@ const TypewriterEffect = ({ text, upto }: { text: string; upto?: number }) => {
   return (
     <>
       <span
-        className="typewriterEffect"
+        className={['typewriterEffect', className].join(' ')}
         ref={textElementRef}
         x-attr-text={text}
       >
